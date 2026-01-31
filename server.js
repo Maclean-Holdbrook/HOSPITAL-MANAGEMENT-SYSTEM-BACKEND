@@ -55,10 +55,10 @@ app.get('/api/patients', async (req, res) => {
 // POST /api/patients - Add a new patient
 app.post('/api/patients', async (req, res) => {
   try {
-    const { name, age, condition, status, contact_number } = req.body;
+    const { name, age, condition, status, contact_number, email } = req.body;
     const { data, error } = await supabase
       .from('patients')
-      .insert([{ name, age, condition, status, contact_number }])
+      .insert([{ name, age, condition, status, contact_number, email }])
       .select();
 
     if (error) throw error;
