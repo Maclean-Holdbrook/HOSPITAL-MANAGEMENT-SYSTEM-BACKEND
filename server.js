@@ -64,7 +64,8 @@ app.post('/api/patients', async (req, res) => {
     if (error) throw error;
     res.status(201).json(data[0]);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Error adding patient:', err);
+    res.status(500).json({ error: err.message, details: err.details, hint: err.hint });
   }
 });
 
